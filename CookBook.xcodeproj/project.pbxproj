@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		20FA15DB2B9BC32B00C835F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA15DA2B9BC32B00C835F0 /* HomeView.swift */; };
 		20FA15DF2B9BC4C100C835F0 /* Receipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA15DE2B9BC4C100C835F0 /* Receipe.swift */; };
 		BA210A282EDE206C008F744E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210A272EDE2067008F744E /* LoginView.swift */; };
+		BABB31392EDE28EA00E9016F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB31382EDE28E000E9016F /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,13 @@
 		20FA15DA2B9BC32B00C835F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		20FA15DE2B9BC4C100C835F0 /* Receipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipe.swift; sourceTree = "<group>"; };
 		BA210A272EDE2067008F744E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BABB31382EDE28E000E9016F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BABB312F2EDE27EB00E9016F /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
+		BABB313A2EDE2BC600E9016F /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		20FA15442B9A788F00C835F0 /* Frameworks */ = {
@@ -58,6 +65,8 @@
 		20FA15492B9A788F00C835F0 /* CookBook */ = {
 			isa = PBXGroup;
 			children = (
+				BABB313A2EDE2BC600E9016F /* Components */,
+				BABB312F2EDE27EB00E9016F /* ViewModels */,
 				20FA157E2B9B41B700C835F0 /* Views */,
 				20FA156F2B9B333500C835F0 /* Models */,
 				20FA154A2B9A788F00C835F0 /* CookBookApp.swift */,
@@ -94,6 +103,7 @@
 		20FA157E2B9B41B700C835F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BABB31382EDE28E000E9016F /* RegisterView.swift */,
 				BA210A272EDE2067008F744E /* LoginView.swift */,
 				20FA15DA2B9BC32B00C835F0 /* HomeView.swift */,
 			);
@@ -114,6 +124,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BABB312F2EDE27EB00E9016F /* ViewModels */,
+				BABB313A2EDE2BC600E9016F /* Components */,
 			);
 			name = CookBook;
 			packageProductDependencies = (
@@ -178,6 +192,7 @@
 				20FA15DF2B9BC4C100C835F0 /* Receipe.swift in Sources */,
 				20FA15DB2B9BC32B00C835F0 /* HomeView.swift in Sources */,
 				BA210A282EDE206C008F744E /* LoginView.swift in Sources */,
+				BABB31392EDE28EA00E9016F /* RegisterView.swift in Sources */,
 				20FA154B2B9A788F00C835F0 /* CookBookApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

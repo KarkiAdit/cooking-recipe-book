@@ -8,30 +8,49 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var email = ""
-    @State private var password = ""
+    @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
         VStack(alignment: .leading){
             Text("Email")
                 .font(.system(size: 15))
-            TextField("Email", text: $email)
-                .font(.system(size: 14))
+            TextField("Email", text: $viewModel.email)
                 .keyboardType(.emailAddress)
-                .textInputAutocapitalization(.never)
-            Rectangle()
-                .fill(Color.border)
-                .frame(height: 1)
-                .padding(.bottom, 15)
-            
+                .textFieldStyle(AuthTextFieldStyle())
+                
             Text("Password")
                 .font(.system(size: 15))
-            SecureField("Password", text: $password)
-                .font(.system(size: 14))
-            Rectangle()
-                .fill(Color.border)
-                .frame(height: 1)
-                .padding(.bottom, 15)
+            if viewModel.showPassword {
+                TextField("Password", text: $viewModel.password)
+                    .textFieldStyle(AuthTextFieldStyle())
+                    .overlay(alignment: .trailing){
+                        Button(action: {
+                            viewModel.showPassword = false
+                        }, label: {
+                            Image(systemName: "eye")
+                                .foregroundStyle(.black)
+                                .padding(.bottom)
+                        })
+                    }
+            } else {
+                VStack {
+                    SecureField("Password", text: $viewModel.password)
+                        .font(.system(size: 14))
+                    Rectangle()
+                        .fill(Color.border)
+                        .frame(height: 1)
+                        .padding(.bottom, 15)
+                }
+                .overlay(alignment: .trailing){
+                    Button(action: {
+                        viewModel.showPassword = true
+                    }, label: {
+                        Image(systemName: "eye.slash")
+                            .foregroundStyle(.black)
+                            .padding(.bottom)
+                    })
+                }
+            }
             Button(action: {}, label: {
                 Text("Login")
                     .font(.system(size: 15, weight: .semibold))
@@ -48,7 +67,7 @@ struct LoginView: View {
                 Text("Don't have an account?")
                     .font(.system(size: 14))
                 Button(action: {
-                    
+                    viewModel.presentRegisterView = true
                 }, label: {
                     Text("Register now")
                         .font(.system(size: 14, weight: .semibold))
@@ -60,6 +79,7 @@ struct LoginView: View {
 
         }
         .padding(.horizontal, 10)
+        .fullScreenCover(isPresented: $viewModel.presentRegisterView, content: {RegisterView()})
     }
 }
 
