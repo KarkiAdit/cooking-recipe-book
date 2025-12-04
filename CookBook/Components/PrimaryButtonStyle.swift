@@ -2,17 +2,23 @@
 //  PrimaryButtonStyle.swift
 //  CookBook
 //
-//  Created by Aditya Karki on 12/4/25.
+//  Created by Gwinyai Nyatsoka on 5/5/2024.
 //
 
+import Foundation
 import SwiftUI
 
-struct PrimaryButtonStyle: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct PrimaryButtonStyle: ButtonStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label
+            .font(.system(size: 15, weight: .semibold))
+            .padding(12)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .background(.green)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
     }
-}
-
-#Preview {
-    PrimaryButtonStyle()
+    
 }

@@ -2,13 +2,14 @@
 //  AuthTextFieldStyle.swift
 //  CookBook
 //
-//  Created by Aditya Karki on 12/1/25.
+//  Created by Gwinyai Nyatsoka on 3/5/2024.
 //
 
 import Foundation
 import SwiftUI
 
 struct AuthTextFieldStyle: TextFieldStyle {
+    
     func _body(configuration: TextField<Self._Label>) -> some View {
         VStack {
             configuration
@@ -18,7 +19,8 @@ struct AuthTextFieldStyle: TextFieldStyle {
                 .fill(Color.border)
                 .frame(height: 1)
                 .padding(.bottom, 15)
-
         }
+        
     }
+    
 }

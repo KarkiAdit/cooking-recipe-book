@@ -3,21 +3,60 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2067E8A92BE2E7A9005294B5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2067E8A82BE2E7A9005294B5 /* LoginView.swift */; };
+		206D477E2BE4374400A40077 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D477D2BE4374400A40077 /* LoginViewModel.swift */; };
+		206D47802BE437D500A40077 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D477F2BE437D500A40077 /* RegisterView.swift */; };
+		20EEE9602BE44ECA004F9A5C /* AuthTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE95F2BE44ECA004F9A5C /* AuthTextFieldStyle.swift */; };
+		20EEE9922BE58A6E004F9A5C /* PasswordComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9912BE58A6E004F9A5C /* PasswordComponentView.swift */; };
+		20EEE9942BE58E3C004F9A5C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9932BE58E3C004F9A5C /* RegisterViewModel.swift */; };
+		20EEE9972BE67772004F9A5C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9962BE67772004F9A5C /* SessionManager.swift */; };
+		20EEE9992BE677E9004F9A5C /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9982BE677E9004F9A5C /* SessionState.swift */; };
+		20EEE99B2BE684DB004F9A5C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE99A2BE684DB004F9A5C /* HomeViewModel.swift */; };
+		20EEE99D2BE6D276004F9A5C /* ReceipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE99C2BE6D276004F9A5C /* ReceipeDetailView.swift */; };
+		20EEE99F2BE81ECC004F9A5C /* AddReceipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE99E2BE81ECC004F9A5C /* AddReceipeView.swift */; };
+		20EEE9A12BE82273004F9A5C /* CapsuleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9A02BE82273004F9A5C /* CapsuleTextFieldStyle.swift */; };
+		20EEE9A32BE82BAD004F9A5C /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9A22BE82BAD004F9A5C /* PrimaryButtonStyle.swift */; };
+		20EEE9A52BE838F4004F9A5C /* AddReceipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9A42BE838F4004F9A5C /* AddReceipeViewModel.swift */; };
+		20EEE9FA2BEBCAD2004F9A5C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 20EEE9F92BEBCAD2004F9A5C /* FirebaseAuth */; };
+		20EEE9FC2BEBCAD2004F9A5C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 20EEE9FB2BEBCAD2004F9A5C /* FirebaseFirestore */; };
+		20EEE9FE2BEBCAD2004F9A5C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 20EEE9FD2BEBCAD2004F9A5C /* FirebaseStorage */; };
+		20EEEA002BED1398004F9A5C /* LoadingComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEE9FF2BED1398004F9A5C /* LoadingComponentView.swift */; };
+		20EEEA022BED7843004F9A5C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEEA012BED7843004F9A5C /* User.swift */; };
+		20EEEA042BEE64E8004F9A5C /* ImageLoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEEA032BEE64E8004F9A5C /* ImageLoaderViewModel.swift */; };
+		20EEEA482BEFC99A004F9A5C /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEEA472BEFC99A004F9A5C /* CameraPicker.swift */; };
+		20EEEA6C2BF235FE004F9A5C /* ProgressComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EEEA6B2BF235FE004F9A5C /* ProgressComponentView.swift */; };
 		20FA154B2B9A788F00C835F0 /* CookBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA154A2B9A788F00C835F0 /* CookBookApp.swift */; };
 		20FA154F2B9A789000C835F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FA154E2B9A789000C835F0 /* Assets.xcassets */; };
 		20FA15522B9A789000C835F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FA15512B9A789000C835F0 /* Preview Assets.xcassets */; };
 		20FA157D2B9B344500C835F0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FA157C2B9B344500C835F0 /* Colors.xcassets */; };
 		20FA15DB2B9BC32B00C835F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA15DA2B9BC32B00C835F0 /* HomeView.swift */; };
 		20FA15DF2B9BC4C100C835F0 /* Receipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA15DE2B9BC4C100C835F0 /* Receipe.swift */; };
-		BA210A282EDE206C008F744E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA210A272EDE2067008F744E /* LoginView.swift */; };
-		BABB31392EDE28EA00E9016F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABB31382EDE28E000E9016F /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2067E8A82BE2E7A9005294B5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		206D477D2BE4374400A40077 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		206D477F2BE437D500A40077 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		20EEE95F2BE44ECA004F9A5C /* AuthTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextFieldStyle.swift; sourceTree = "<group>"; };
+		20EEE9912BE58A6E004F9A5C /* PasswordComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordComponentView.swift; sourceTree = "<group>"; };
+		20EEE9932BE58E3C004F9A5C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		20EEE9962BE67772004F9A5C /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		20EEE9982BE677E9004F9A5C /* SessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
+		20EEE99A2BE684DB004F9A5C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		20EEE99C2BE6D276004F9A5C /* ReceipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceipeDetailView.swift; sourceTree = "<group>"; };
+		20EEE99E2BE81ECC004F9A5C /* AddReceipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceipeView.swift; sourceTree = "<group>"; };
+		20EEE9A02BE82273004F9A5C /* CapsuleTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleTextFieldStyle.swift; sourceTree = "<group>"; };
+		20EEE9A22BE82BAD004F9A5C /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		20EEE9A42BE838F4004F9A5C /* AddReceipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceipeViewModel.swift; sourceTree = "<group>"; };
+		20EEE9FF2BED1398004F9A5C /* LoadingComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingComponentView.swift; sourceTree = "<group>"; };
+		20EEEA012BED7843004F9A5C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20EEEA032BEE64E8004F9A5C /* ImageLoaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoaderViewModel.swift; sourceTree = "<group>"; };
+		20EEEA472BEFC99A004F9A5C /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
+		20EEEA6B2BF235FE004F9A5C /* ProgressComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressComponentView.swift; sourceTree = "<group>"; };
 		20FA15472B9A788F00C835F0 /* CookBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FA154A2B9A788F00C835F0 /* CookBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBookApp.swift; sourceTree = "<group>"; };
 		20FA154E2B9A789000C835F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -25,26 +64,63 @@
 		20FA157C2B9B344500C835F0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		20FA15DA2B9BC32B00C835F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		20FA15DE2B9BC4C100C835F0 /* Receipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipe.swift; sourceTree = "<group>"; };
-		BA210A272EDE2067008F744E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		BABB31382EDE28E000E9016F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BABB312F2EDE27EB00E9016F /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
-		BABB313A2EDE2BC600E9016F /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		20FA15442B9A788F00C835F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20EEE9FA2BEBCAD2004F9A5C /* FirebaseAuth in Frameworks */,
+				20EEE9FC2BEBCAD2004F9A5C /* FirebaseFirestore in Frameworks */,
+				20EEE9FE2BEBCAD2004F9A5C /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		206D477C2BE4373100A40077 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				206D477D2BE4374400A40077 /* LoginViewModel.swift */,
+				20EEE9932BE58E3C004F9A5C /* RegisterViewModel.swift */,
+				20EEE99A2BE684DB004F9A5C /* HomeViewModel.swift */,
+				20EEE9A42BE838F4004F9A5C /* AddReceipeViewModel.swift */,
+				20EEEA032BEE64E8004F9A5C /* ImageLoaderViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		20EEE95E2BE44E8F004F9A5C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				20EEE95F2BE44ECA004F9A5C /* AuthTextFieldStyle.swift */,
+				20EEE9912BE58A6E004F9A5C /* PasswordComponentView.swift */,
+				20EEE9A02BE82273004F9A5C /* CapsuleTextFieldStyle.swift */,
+				20EEE9A22BE82BAD004F9A5C /* PrimaryButtonStyle.swift */,
+				20EEE9FF2BED1398004F9A5C /* LoadingComponentView.swift */,
+				20EEEA6B2BF235FE004F9A5C /* ProgressComponentView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		20EEE9952BE6775C004F9A5C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				20EEE9962BE67772004F9A5C /* SessionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		20EEEA462BEFC98A004F9A5C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				20EEEA472BEFC99A004F9A5C /* CameraPicker.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		20FA153E2B9A788F00C835F0 = {
 			isa = PBXGroup;
 			children = (
@@ -65,8 +141,10 @@
 		20FA15492B9A788F00C835F0 /* CookBook */ = {
 			isa = PBXGroup;
 			children = (
-				BABB313A2EDE2BC600E9016F /* Components */,
-				BABB312F2EDE27EB00E9016F /* ViewModels */,
+				20EEEA462BEFC98A004F9A5C /* Utility */,
+				20EEE9952BE6775C004F9A5C /* Managers */,
+				20EEE95E2BE44E8F004F9A5C /* Components */,
+				206D477C2BE4373100A40077 /* ViewModels */,
 				20FA157E2B9B41B700C835F0 /* Views */,
 				20FA156F2B9B333500C835F0 /* Models */,
 				20FA154A2B9A788F00C835F0 /* CookBookApp.swift */,
@@ -96,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				20FA15DE2B9BC4C100C835F0 /* Receipe.swift */,
+				20EEE9982BE677E9004F9A5C /* SessionState.swift */,
+				20EEEA012BED7843004F9A5C /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -103,9 +183,11 @@
 		20FA157E2B9B41B700C835F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BABB31382EDE28E000E9016F /* RegisterView.swift */,
-				BA210A272EDE2067008F744E /* LoginView.swift */,
 				20FA15DA2B9BC32B00C835F0 /* HomeView.swift */,
+				2067E8A82BE2E7A9005294B5 /* LoginView.swift */,
+				206D477F2BE437D500A40077 /* RegisterView.swift */,
+				20EEE99C2BE6D276004F9A5C /* ReceipeDetailView.swift */,
+				20EEE99E2BE81ECC004F9A5C /* AddReceipeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,12 +207,11 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				BABB312F2EDE27EB00E9016F /* ViewModels */,
-				BABB313A2EDE2BC600E9016F /* Components */,
-			);
 			name = CookBook;
 			packageProductDependencies = (
+				20EEE9F92BEBCAD2004F9A5C /* FirebaseAuth */,
+				20EEE9FB2BEBCAD2004F9A5C /* FirebaseFirestore */,
+				20EEE9FD2BEBCAD2004F9A5C /* FirebaseStorage */,
 			);
 			productName = CookBook;
 			productReference = 20FA15472B9A788F00C835F0 /* CookBook.app */;
@@ -161,6 +242,7 @@
 			);
 			mainGroup = 20FA153E2B9A788F00C835F0;
 			packageReferences = (
+				20EEE9F82BEBCAD2004F9A5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 20FA15482B9A788F00C835F0 /* Products */;
 			projectDirPath = "";
@@ -191,9 +273,26 @@
 			files = (
 				20FA15DF2B9BC4C100C835F0 /* Receipe.swift in Sources */,
 				20FA15DB2B9BC32B00C835F0 /* HomeView.swift in Sources */,
-				BA210A282EDE206C008F744E /* LoginView.swift in Sources */,
-				BABB31392EDE28EA00E9016F /* RegisterView.swift in Sources */,
+				20EEE9602BE44ECA004F9A5C /* AuthTextFieldStyle.swift in Sources */,
+				2067E8A92BE2E7A9005294B5 /* LoginView.swift in Sources */,
+				20EEE9A32BE82BAD004F9A5C /* PrimaryButtonStyle.swift in Sources */,
+				20EEE9A12BE82273004F9A5C /* CapsuleTextFieldStyle.swift in Sources */,
+				206D47802BE437D500A40077 /* RegisterView.swift in Sources */,
+				20EEEA042BEE64E8004F9A5C /* ImageLoaderViewModel.swift in Sources */,
+				20EEE9992BE677E9004F9A5C /* SessionState.swift in Sources */,
+				20EEE9A52BE838F4004F9A5C /* AddReceipeViewModel.swift in Sources */,
+				20EEEA482BEFC99A004F9A5C /* CameraPicker.swift in Sources */,
+				20EEE99F2BE81ECC004F9A5C /* AddReceipeView.swift in Sources */,
+				206D477E2BE4374400A40077 /* LoginViewModel.swift in Sources */,
+				20EEE99B2BE684DB004F9A5C /* HomeViewModel.swift in Sources */,
+				20EEE99D2BE6D276004F9A5C /* ReceipeDetailView.swift in Sources */,
 				20FA154B2B9A788F00C835F0 /* CookBookApp.swift in Sources */,
+				20EEE9942BE58E3C004F9A5C /* RegisterViewModel.swift in Sources */,
+				20EEEA6C2BF235FE004F9A5C /* ProgressComponentView.swift in Sources */,
+				20EEEA002BED1398004F9A5C /* LoadingComponentView.swift in Sources */,
+				20EEE9972BE67772004F9A5C /* SessionManager.swift in Sources */,
+				20EEE9922BE58A6E004F9A5C /* PasswordComponentView.swift in Sources */,
+				20EEEA022BED7843004F9A5C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +429,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "CookBook would like to use your camera to take pictures of your receipes";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "CookBook would like access to your photo library to upload images of your receipes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -359,6 +460,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "CookBook would like to use your camera to take pictures of your receipes";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "CookBook would like access to your photo library to upload images of your receipes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -399,6 +502,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20EEE9F82BEBCAD2004F9A5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.25.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20EEE9F92BEBCAD2004F9A5C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20EEE9F82BEBCAD2004F9A5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		20EEE9FB2BEBCAD2004F9A5C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20EEE9F82BEBCAD2004F9A5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		20EEE9FD2BEBCAD2004F9A5C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20EEE9F82BEBCAD2004F9A5C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20FA153F2B9A788F00C835F0 /* Project object */;
 }

@@ -2,17 +2,21 @@
 //  CapsuleTextFieldStyle.swift
 //  CookBook
 //
-//  Created by Aditya Karki on 12/4/25.
+//  Created by Gwinyai Nyatsoka on 5/5/2024.
 //
 
+import Foundation
 import SwiftUI
 
-struct CapsuleTextFieldStyle: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct CapsuleTextFieldStyle: TextFieldStyle {
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding()
+            .background(
+                Capsule()
+                    .fill(Color.primaryFormEntry)
+            )
     }
-}
-
-#Preview {
-    CapsuleTextFieldStyle()
+    
 }
