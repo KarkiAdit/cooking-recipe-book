@@ -99,9 +99,14 @@ struct HomeView: View {
         .task {
             await viewModel.fetchReceipes()
         }
-        .sheet(isPresented: $viewModel.showAddReceipeView, content: {
+        .sheet(isPresented: $viewModel.showAddReceipeView, onDismiss: {
+            Task {
+                await viewModel.fetchReceipes()
+            }
+        }) {
             AddReceipeView()
-        })
+        }
+
     }
     
 }
