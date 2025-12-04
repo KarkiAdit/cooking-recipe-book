@@ -1,13 +1,8 @@
-//
-//  HomeViewModel.swift
-//  CookBook
-//
-//
-
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+@MainActor
 @Observable
 class HomeViewModel {
     
@@ -17,15 +12,33 @@ class HomeViewModel {
     
     func fetchReceipes() async {
         guard let userId = Auth.auth().currentUser?.uid else {
+            print("No logged in user")
             return
         }
+        
         do {
-            let receipesResult = try await Firestore.firestore().collection("receipes").whereField("userId", isEqualTo: userId).getDocuments()
+            let snapshot = try await Firestore.firestore()
+                .collection("receipes")
+                .whereField("userId", isEqualTo: userId)
+                .getDocuments()
             
-            receipes = receipesResult.documents.compactMap({ Receipe(snapshot: $0) })
+            print("Raw docs count:", snapshot.documents.count)
+            for doc in snapshot.documents {
+                print("Doc:", doc.documentID, doc.data())
+            }
+            
+            receipes = snapshot.documents.compactMap { doc in
+                let r = Receipe(snapshot: doc)
+                if r == nil {
+                    print("Receipe init failed for doc:", doc.documentID)
+                }
+                return r
+            }
+            
+            print("Receipes after mapping:", receipes.count)
             
         } catch {
-            
+            print("Error fetching recipes:", error)
         }
     }
     
@@ -38,5 +51,4 @@ class HomeViewModel {
             return false
         }
     }
-    
 }
