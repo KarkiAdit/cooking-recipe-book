@@ -2,7 +2,6 @@
 //  LoginViewModel.swift
 //  CookBook
 //
-//  Created by Gwinyai Nyatsoka on 2/5/2024.
 //
 
 import Foundation

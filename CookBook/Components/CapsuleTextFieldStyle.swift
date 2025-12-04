@@ -2,7 +2,6 @@
 //  CapsuleTextFieldStyle.swift
 //  CookBook
 //
-//  Created by Gwinyai Nyatsoka on 5/5/2024.
 //
 
 import Foundation

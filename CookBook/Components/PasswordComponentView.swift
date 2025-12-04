@@ -2,7 +2,6 @@
 //  PasswordComponentView.swift
 //  CookBook
 //
-//  Created by Gwinyai Nyatsoka on 3/5/2024.
 //
 
 import SwiftUI

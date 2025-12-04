@@ -2,7 +2,6 @@
 //  ProgressComponentView.swift
 //  CookBook
 //
-//  Created by Gwinyai Nyatsoka on 13/5/2024.
 //
 
 import SwiftUI
