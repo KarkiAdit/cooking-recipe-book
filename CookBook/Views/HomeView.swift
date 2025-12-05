@@ -11,6 +11,7 @@ struct HomeView: View {
     @State var viewModel = HomeViewModel()
     @Environment(SessionManager.self) var sessionManager: SessionManager
     
+    // 3-column grid for "All"
     let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10),
@@ -29,14 +30,19 @@ struct HomeView: View {
         CGFloat(1.5) * itemWidth
     }
     
+    // MARK: - Sections
+    
+    /// Last 3 recipes (most recently fetched / added)
     var recentReceipes: [Receipe] {
-        Array(viewModel.receipes.prefix(3))
+        Array(viewModel.receipes.suffix(3).reversed())
     }
     
+    /// Suggested = saved recipes (up to 3)
     var suggestedReceipes: [Receipe] {
-        Array(viewModel.receipes.dropFirst(3).prefix(3))
+        Array(viewModel.savedReceipes.prefix(3))
     }
     
+    /// All user's recipes
     var allReceipes: [Receipe] {
         viewModel.receipes
     }
@@ -59,53 +65,63 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     
-                    // MARK: Recent
-                    HStack {
-                        Text("Recently Added")
-                            .font(.system(size: 20, weight: .bold))
-                    }
-                    .padding(.horizontal, padding)
-                    .padding(.top, 12)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
-                            ForEach(recentReceipes) { receipe in
-                                recentCard(receipe)
-                            }
+                    // MARK: Recently Added
+                    if !recentReceipes.isEmpty {
+                        HStack {
+                            Text("Recently Added")
+                                .font(.system(size: 20, weight: .bold))
+                            Spacer()
+                            Text(userDisplayName)
+                                .font(.system(size: 15, weight: .medium))
+                                .foregroundStyle(.secondary)
                         }
                         .padding(.horizontal, padding)
-                    }
-                    
-                    // MARK: Suggested For You
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Suggested For You")
-                            .font(.system(size: 18, weight: .semibold))
-                            .padding(.horizontal, padding)
+                        .padding(.top, 12)
                         
-                        VStack(spacing: 12) {
-                            ForEach(suggestedReceipes) { receipe in
-                                suggestedRow(receipe)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 12) {
+                                ForEach(recentReceipes) { receipe in
+                                    recentCard(receipe)
+                                }
                             }
+                            .padding(.horizontal, padding)
                         }
-                        .padding(.horizontal, padding)
+                    }
+                    
+                    // MARK: Suggested For You (saved)
+                    if !suggestedReceipes.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Suggested For You")
+                                .font(.system(size: 18, weight: .semibold))
+                                .padding(.horizontal, padding)
+                            
+                            VStack(spacing: 12) {
+                                ForEach(suggestedReceipes) { receipe in
+                                    suggestedRow(receipe)
+                                }
+                            }
+                            .padding(.horizontal, padding)
+                        }
                     }
                     
                     // MARK: All
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("All")
-                            .font(.system(size: 18, weight: .semibold))
-                            .padding(.horizontal, padding)
-                        
-                        LazyVGrid(columns: columns, spacing: spacing) {
-                            ForEach(allReceipes) { receipe in
-                                NavigationLink {
-                                    ReceipeDetailView(receipe: receipe)
-                                } label: {
-                                    gridCard(receipe)
+                    if !allReceipes.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("All")
+                                .font(.system(size: 18, weight: .semibold))
+                                .padding(.horizontal, padding)
+                            
+                            LazyVGrid(columns: columns, spacing: spacing) {
+                                ForEach(allReceipes) { receipe in
+                                    NavigationLink {
+                                        ReceipeDetailView(receipe: receipe)
+                                    } label: {
+                                        gridCard(receipe)
+                                    }
                                 }
                             }
+                            .padding(.horizontal, padding)
                         }
-                        .padding(.horizontal, padding)
                     }
                     
                     // extra bottom padding so last row isn't hidden behind button
@@ -113,6 +129,7 @@ struct HomeView: View {
                 }
             }
             .safeAreaInset(edge: .bottom) {
+                // Bottom Add button
                 Button(action: {
                     viewModel.showAddReceipeView = true
                 }, label: {
@@ -122,7 +139,7 @@ struct HomeView: View {
                 .padding(.horizontal)
                 .padding(.top, 8)
                 .padding(.bottom, 6)
-                .background(.ultraThinMaterial) // nice blur behind button
+                .background(.ultraThinMaterial)
             }
             .toolbar {
                 // Profile (leading)
@@ -130,7 +147,7 @@ struct HomeView: View {
                     NavigationLink {
                         UserProfileView(
                             yourReceipes: viewModel.receipes,
-                            savedReceipes: [] // plug in real saved recipes later
+                            savedReceipes: viewModel.savedReceipes
                         )
                     } label: {
                         Image(systemName: "person.circle.fill")
@@ -159,14 +176,34 @@ struct HomeView: View {
         }
         .task {
             await viewModel.fetchReceipes()
+            await viewModel.fetchSavedReceipes()
         }
         .sheet(isPresented: $viewModel.showAddReceipeView, onDismiss: {
             Task {
                 await viewModel.fetchReceipes()
+                await viewModel.fetchSavedReceipes()
             }
         }) {
             AddReceipeView()
         }
+    }
+    
+    // MARK: - Save overlay helper
+    
+    private func bookmarkOverlay(for receipe: Receipe) -> some View {
+        let isSaved = viewModel.savedReceipeIds.contains(receipe.id)
+        
+        return Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
+            .font(.system(size: 13, weight: .semibold))
+            .padding(6)
+            .background(.ultraThinMaterial)
+            .clipShape(Circle())
+            .padding(6)
+            .onTapGesture {
+                Task {
+                    await viewModel.toggleSave(for: receipe)
+                }
+            }
     }
     
     // MARK: - Card views
@@ -175,24 +212,28 @@ struct HomeView: View {
         NavigationLink {
             ReceipeDetailView(receipe: receipe)
         } label: {
-            VStack(alignment: .leading, spacing: 4) {
-                AsyncImage(url: URL(string: receipe.image)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+            ZStack(alignment: .topTrailing) {
+                VStack(alignment: .leading, spacing: 4) {
+                    AsyncImage(url: URL(string: receipe.image)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: itemWidth, height: itemHeight * 0.9)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .clipped()
+                    } placeholder: {
+                        VStack {
+                            ProgressView()
+                        }
                         .frame(width: itemWidth, height: itemHeight * 0.9)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .clipped()
-                } placeholder: {
-                    VStack {
-                        ProgressView()
                     }
-                    .frame(width: itemWidth, height: itemHeight * 0.9)
+                    Text(receipe.name)
+                        .lineLimit(1)
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.black)
                 }
-                Text(receipe.name)
-                    .lineLimit(1)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.black)
+                
+                bookmarkOverlay(for: receipe)
             }
         }
     }
@@ -201,59 +242,67 @@ struct HomeView: View {
         NavigationLink {
             ReceipeDetailView(receipe: receipe)
         } label: {
-            HStack(spacing: 12) {
+            ZStack(alignment: .topTrailing) {
+                HStack(spacing: 12) {
+                    AsyncImage(url: URL(string: receipe.image)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 90, height: 90)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .clipped()
+                    } placeholder: {
+                        VStack {
+                            ProgressView()
+                        }
+                        .frame(width: 90, height: 90)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(receipe.name)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundStyle(.black)
+                            .lineLimit(1)
+                        Text("\(receipe.time) mins • Tap to view")
+                            .font(.system(size: 13))
+                            .foregroundStyle(.secondary)
+                            .lineLimit(2)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(10)
+                .background(Color.primaryFormEntry.opacity(0.6))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                
+                bookmarkOverlay(for: receipe)
+            }
+        }
+    }
+    
+    private func gridCard(_ receipe: Receipe) -> some View {
+        ZStack(alignment: .topTrailing) {
+            VStack(alignment: .leading) {
                 AsyncImage(url: URL(string: receipe.image)) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 90, height: 90)
+                        .frame(width: itemWidth, height: itemHeight)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .clipped()
                 } placeholder: {
                     VStack {
                         ProgressView()
                     }
-                    .frame(width: 90, height: 90)
-                }
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(receipe.name)
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(.black)
-                        .lineLimit(1)
-                    Text("\(receipe.time) mins • Tap to view")
-                        .font(.system(size: 13))
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                }
-                
-                Spacer()
-            }
-            .padding(10)
-            .background(Color.primaryFormEntry.opacity(0.6))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-        }
-    }
-    
-    private func gridCard(_ receipe: Receipe) -> some View {
-        VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: receipe.image)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
                     .frame(width: itemWidth, height: itemHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .clipped()
-            } placeholder: {
-                VStack {
-                    ProgressView()
                 }
-                .frame(width: itemWidth, height: itemHeight)
+                Text(receipe.name)
+                    .lineLimit(1)
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(.black)
             }
-            Text(receipe.name)
-                .lineLimit(1)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(.black)
+            
+            bookmarkOverlay(for: receipe)
         }
     }
 }
