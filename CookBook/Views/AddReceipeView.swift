@@ -7,14 +7,6 @@
 import SwiftUI
 import PhotosUI
 
-/*
- 
- An image is binary data
- 
- Upload an image to Google Cloud Storage => Reference
- To save the receipe into Firestore Database
- */
-
 struct AddReceipeView: View {
     
     @State var viewModel = AddReceipeViewModel()
@@ -25,8 +17,8 @@ struct AddReceipeView: View {
         ZStack {
             VStack(alignment: .leading) {
                 Text("What's New")
-                        .font(.system(size: 26, weight: .bold))
-                        .padding(.top, 20)
+                    .font(.system(size: 26, weight: .bold))
+                    .padding(.top, 20)
                 ZStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 6)
@@ -35,7 +27,6 @@ struct AddReceipeView: View {
                         Image(systemName: "photo.fill")
                     }
                     if let displayedReceipeImage = viewModel.displayedReceipeImage {
-                        
                         displayedReceipeImage
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -71,11 +62,33 @@ struct AddReceipeView: View {
                 Text("Cooking Instructions")
                     .font(.system(size: 15, weight: .semibold))
                     .padding(.top)
-                TextEditor(text: $viewModel.instructions)
-                    .frame(height: 150)
-                    .background(Color.primaryFormEntry)
-                    .scrollContentBackground(.hidden)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                ZStack(alignment: .bottomTrailing) {
+                    TextEditor(text: $viewModel.instructions)
+                        .frame(height: 150)
+                        .background(Color.primaryFormEntry)
+                        .scrollContentBackground(.hidden)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
+                    HStack(spacing: 8) {
+                        if viewModel.isAIProcessing {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                        }
+                        Button {
+                            Task {
+                                await viewModel.generateAIInstructions()
+                            }
+                        } label: {
+                            Image(systemName: "sparkles")
+                                .font(.system(size: 16, weight: .semibold))
+                        }
+                        .padding(8)
+                        .background(Color.white.opacity(0.9))
+                        .clipShape(Capsule())
+                        .shadow(radius: 2)
+                    }
+                    .padding(8)
+                }
                 Button(action: {
                     Task {
                         if let imageURL = await viewModel.upload() {
@@ -126,15 +139,12 @@ struct AddReceipeView: View {
             }
         }
         .alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
-            Button(action: {
-                
-            }, label: {
+            Button(action: {}) {
                 Text("OK")
-            })
+            }
         } message: {
             Text(viewModel.alertMessage)
         }
-
     }
 }
 

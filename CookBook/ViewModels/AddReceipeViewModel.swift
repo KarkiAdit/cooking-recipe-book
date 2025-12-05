@@ -1,9 +1,3 @@
-//
-//  AddReceipeViewModel.swift
-//  CookBook
-//
-//
-
 import Foundation
 import SwiftUI
 import FirebaseStorage
@@ -27,6 +21,15 @@ class AddReceipeViewModel {
     var showAlert = false
     var alertTitle = ""
     var alertMessage = ""
+    
+    var isAIProcessing = false
+    var aiErrorMessage = ""
+    
+    private let recipeAIService: RecipeAIServiceProtocol
+    
+    init(recipeAIService: RecipeAIServiceProtocol = RecipeAIService()) {
+        self.recipeAIService = recipeAIService
+    }
     
     func addReceipe(imageURL: URL, handler: @escaping (_ success: Bool) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -81,7 +84,7 @@ class AddReceipeViewModel {
             return nil
         }
         guard let receipeImage = receipeImage,
-        let imageData = receipeImage.jpegData(compressionQuality: 0.7) else {
+              let imageData = receipeImage.jpegData(compressionQuality: 0.7) else {
             createAlert(title: "Image Upload Failed", message: "Your receipe image could not be uploaded.")
             return nil
         }
@@ -111,4 +114,26 @@ class AddReceipeViewModel {
         }
     }
     
+    func generateAIInstructions() async {
+        isAIProcessing = true
+        defer { isAIProcessing = false }
+        
+        let imageData = receipeImage?.jpegData(compressionQuality: 0.7)
+        
+        let context = RecipeContext(
+            name: receipeName,
+            ingredients: [],
+            time: preparationTime,
+            currentInstructions: instructions,
+            image: imageData
+        )
+        
+        do {
+            let suggestion = try await recipeAIService.suggestInstructions(for: context)
+            instructions = suggestion
+        } catch {
+            aiErrorMessage = error.localizedDescription
+            createAlert(title: "AI Error", message: aiErrorMessage)
+        }
+    }
 }
