@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -65,6 +65,10 @@
 		20FA15DA2B9BC32B00C835F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		20FA15DE2B9BC4C100C835F0 /* Receipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BADA6BC02EE259990074B171 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		20FA15442B9A788F00C835F0 /* Frameworks */ = {
@@ -141,6 +145,7 @@
 		20FA15492B9A788F00C835F0 /* CookBook */ = {
 			isa = PBXGroup;
 			children = (
+				BADA6BC02EE259990074B171 /* Services */,
 				20EEEA462BEFC98A004F9A5C /* Utility */,
 				20EEE9952BE6775C004F9A5C /* Managers */,
 				20EEE95E2BE44E8F004F9A5C /* Components */,
@@ -206,6 +211,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BADA6BC02EE259990074B171 /* Services */,
 			);
 			name = CookBook;
 			packageProductDependencies = (
