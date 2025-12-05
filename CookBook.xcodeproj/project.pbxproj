@@ -35,6 +35,7 @@
 		20FA157D2B9B344500C835F0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FA157C2B9B344500C835F0 /* Colors.xcassets */; };
 		20FA15DB2B9BC32B00C835F0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA15DA2B9BC32B00C835F0 /* HomeView.swift */; };
 		20FA15DF2B9BC4C100C835F0 /* Receipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FA15DE2B9BC4C100C835F0 /* Receipe.swift */; };
+		BA7EBB702EE29FB100A57400 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7EBB6F2EE29FB100A57400 /* UserProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		20FA157C2B9B344500C835F0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		20FA15DA2B9BC32B00C835F0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		20FA15DE2B9BC4C100C835F0 /* Receipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipe.swift; sourceTree = "<group>"; };
+		BA7EBB6F2EE29FB100A57400 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -193,6 +195,7 @@
 				206D477F2BE437D500A40077 /* RegisterView.swift */,
 				20EEE99C2BE6D276004F9A5C /* ReceipeDetailView.swift */,
 				20EEE99E2BE81ECC004F9A5C /* AddReceipeView.swift */,
+				BA7EBB6F2EE29FB100A57400 /* UserProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				206D477E2BE4374400A40077 /* LoginViewModel.swift in Sources */,
 				20EEE99B2BE684DB004F9A5C /* HomeViewModel.swift in Sources */,
 				20EEE99D2BE6D276004F9A5C /* ReceipeDetailView.swift in Sources */,
+				BA7EBB702EE29FB100A57400 /* UserProfileView.swift in Sources */,
 				20FA154B2B9A788F00C835F0 /* CookBookApp.swift in Sources */,
 				20EEE9942BE58E3C004F9A5C /* RegisterViewModel.swift in Sources */,
 				20EEEA6C2BF235FE004F9A5C /* ProgressComponentView.swift in Sources */,
